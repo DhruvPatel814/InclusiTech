@@ -2,22 +2,14 @@
 import { useState } from "react";
 import { Brain, MessageCircle, Phone, Video, Calendar, ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useToast } from "@/hooks/use-toast";
 import { MentalHealthResources } from "@/components/MentalHealthResources";
 import { ChatSupport } from "@/components/ChatSupport";
+import { TelemedicineSupport } from "@/components/TelemedicineSupport";
+import { EmergencySupport } from "@/components/EmergencySupport";
 import { Link } from "react-router-dom";
 
 const HealthcareHub = () => {
-  const [activeTab, setActiveTab] = useState<"chat" | "mental-health">("chat");
-  const { toast } = useToast();
-
-  const handleTelemedicineClick = () => {
-    toast({
-      title: "Coming Soon",
-      description: "Telemedicine appointments will be available soon!",
-      duration: 3000,
-    });
-  };
+  const [activeTab, setActiveTab] = useState<"chat" | "mental-health" | "telemedicine" | "emergency">("chat");
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -54,9 +46,9 @@ const HealthcareHub = () => {
               Chat Support
             </Button>
             <Button
-              variant="outline"
+              variant={activeTab === "telemedicine" ? "default" : "outline"}
               className="flex items-center justify-center gap-2 p-6"
-              onClick={handleTelemedicineClick}
+              onClick={() => setActiveTab("telemedicine")}
             >
               <Video className="h-5 w-5" />
               Telemedicine
@@ -70,13 +62,9 @@ const HealthcareHub = () => {
               Mental Health
             </Button>
             <Button
-              variant="outline"
+              variant={activeTab === "emergency" ? "default" : "outline"}
               className="flex items-center justify-center gap-2 p-6"
-              onClick={() => toast({
-                title: "Coming Soon",
-                description: "Emergency support will be available soon!",
-                duration: 3000,
-              })}
+              onClick={() => setActiveTab("emergency")}
             >
               <Phone className="h-5 w-5" />
               Emergency
@@ -85,11 +73,10 @@ const HealthcareHub = () => {
 
           {/* Content Area */}
           <div className="mt-8 rounded-lg bg-white p-6 shadow-sm">
-            {activeTab === "chat" ? (
-              <ChatSupport />
-            ) : (
-              <MentalHealthResources />
-            )}
+            {activeTab === "chat" && <ChatSupport />}
+            {activeTab === "mental-health" && <MentalHealthResources />}
+            {activeTab === "telemedicine" && <TelemedicineSupport />}
+            {activeTab === "emergency" && <EmergencySupport />}
           </div>
         </div>
       </div>
