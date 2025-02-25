@@ -1,6 +1,7 @@
 
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 export const Hero = () => {
   return (
@@ -21,9 +22,12 @@ export const Hero = () => {
             <Button 
               size="lg"
               className="bg-healthcare-600 hover:bg-healthcare-700"
+              asChild
             >
-              Get Started
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <Link to="/healthcare">
+                Get Started
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
             </Button>
             <Button 
               size="lg" 
