@@ -62,7 +62,7 @@ export const MentalHealthResources = () => {
             </div>
           </div>
         </Card>
-      </div>
+      ))}
     </div>
   );
 };
