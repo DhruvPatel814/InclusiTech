@@ -1,5 +1,5 @@
 
-import { Phone, Ambulance, Hospital, FirstAid } from "lucide-react";
+import { Phone, Ambulance, Hospital, Stethoscope } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
@@ -96,7 +96,7 @@ export const EmergencySupport = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-4">
               <div className="rounded-full bg-healthcare-100 p-3">
-                <FirstAid className="h-6 w-6 text-healthcare-600" />
+                <Stethoscope className="h-6 w-6 text-healthcare-600" />
               </div>
               <div>
                 <h3 className="text-lg font-semibold">First Aid Guide</h3>
@@ -116,3 +116,4 @@ export const EmergencySupport = () => {
     </div>
   );
 };
+
